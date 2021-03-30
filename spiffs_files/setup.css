@@ -1,0 +1,378 @@
+/*Start with css reset */
+html,
+body {
+  font-size  : 1em;
+  font-family: 'Times New Roman', Georgia, Times, serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing : border-box;
+  font-family: 'Times New Roman', Georgia, Times, serif;
+  font-size  : inherit;
+  line-height: inherit;
+}
+
+html,
+body,
+span,
+div,
+form,
+fieldset,
+label,
+a,
+p,
+section,
+h1,
+h2,
+h3,
+h4 {
+  margin : 0;
+  padding: 0;
+  border : 0;
+}
+
+/* end of reset*/
+
+#content {
+  margin: auto;
+}
+
+h1 {
+  font-size: 1.4em;
+}
+
+h2 {
+  font-size: 1.2em;
+}
+
+#generalHeading {
+  display        : flex;
+  flex-direction : row;
+  justify-content: center;
+  margin         : 0.4rem;
+}
+
+
+.formContainer {
+  border-radius   : 0.4rem;
+  background-color: rgb(242, 242, 242);
+  padding         : 1.25rem;
+}
+
+.formHeading {
+  display        : flex;
+  flex-direction : row;
+  justify-content: center;
+  margin         : 0.2rem;
+}
+
+
+.formSubmit {
+  height         : 3.5rem;
+  display        : flex;
+  flex-direction : row;
+  justify-content: center;
+  align-items    : center;
+}
+
+.settingsColumn {
+  display       : flex;
+  flex-direction: column;
+}
+
+.formRow {
+  margin-top     : 0.3rem;
+  margin-bottom  : 0.3rem;
+  display        : flex;
+  flex-direction : row;
+  align-items    : center;
+  justify-content: center;
+}
+
+.formRow.Remark,
+#timeShow {
+  margin-bottom: 0.0rem;
+  font-style   : italic;
+  font-size    : 90%;
+}
+
+.labelContainer {
+  flex           : 1 1 45%;
+  order          : 1;
+  display        : flex;
+  flex-direction : row;
+  justify-content: flex-end;
+  align-items    : center;
+}
+
+.settingLabel {
+  padding-right: 0.6rem;
+}
+
+.inputContainer {
+  flex           : 2 1 55%;
+  order          : 2;
+  display        : flex;
+  flex-direction : row;
+  justify-content: flex-start;
+  align-items    : center;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance   : none;
+  margin            : 0;
+}
+
+input[type=number],
+input[type=password],
+input[type=text] {
+  border-style    : solid;
+  border-radius   : 3px;
+  border-color    : rgb(201, 201, 201);
+  border-width    : 1px;
+  background-color: rgb(255, 255, 255);
+  padding         : 0.1em;
+  height          : 1.6rem;
+}
+
+input[type=password],
+input[type=text] {
+  width: 20em;
+}
+
+
+button[type=submit],
+#upload-button,
+#pageLink a {
+  background-color: rgb(76, 175, 80);
+  color           : rgb(255, 255, 255);
+  padding         : 0.8rem 1rem;
+  border          : none;
+  border-radius   : 0.25rem;
+  cursor          : pointer;
+}
+
+button[type=submit]:hover,
+#upload-button:hover {
+  background-color: rgb(59, 133, 63);
+}
+
+button[type=submit]:active,
+#upload-button:active {
+  background-color: rgb(8, 19, 9);
+}
+
+/* Hide the browser's default checkbox and give it needed width and height
+   to click on. Placement of the checkbox. And with z-index make it on top.
+ */
+input[type="checkbox"] {
+  left              : 0.05rem;
+  -moz-appearance   : none;
+  -webkit-appearance: none;
+  appearance        : none;
+  width             : 1.4rem;
+  height            : 1.4rem;
+  z-index           : 99;
+  outline-width     : 0;
+  outline           : none;
+}
+
+/* The start of the extra span is placed at the start of the checkbox. 
+   Use flexbox to align everything in the centre */
+input[type="checkbox"]+span {
+  position     : relative;
+  left         : -1.4rem;
+  display      : flex;
+  align-items  : center;
+  outline-width: 0;
+  outline      : none;
+}
+
+/* Paint the box in the span :before. With transparent checkmark. */
+input[type="checkbox"]+span:before {
+  width           : 1.4rem;
+  height          : 1.4rem;
+  border-style    : solid;
+  border-radius   : 3px;
+  border-color    : rgb(201, 201, 201);
+  border-width    : 1px;
+  content         : "\2714";
+  font-size       : 1rem;
+  background-color: rgb(255, 255, 255);
+  color           : transparent;
+  display         : flex;
+  justify-content : center;
+  align-items     : center;
+}
+
+/* Checkbox is checked. Color the checkmark and other options*/
+input[type="checkbox"]:checked+span:before {
+  color           : rgb(255, 255, 255);
+  background-color: rgb(90, 140, 231);
+  border-radius   : 3px;
+}
+
+/* Checkbox colors for disabled*/
+input[type="checkbox"]:disabled+span:before {
+  background-color: rgb(105, 105, 105);
+  border-radius   : 3px;
+}
+
+/* Checkbox colors for disabled*/
+input[type="checkbox"]:disabled:checked+span:before {
+  color           : rgb(222, 222, 222);
+  background-color: rgb(105, 105, 105);
+  border-radius   : 3px;
+}
+
+#listBox {
+  display       : flex;
+  border-style  : solid;
+  border-top    : 0;
+  border-radius : 0 0 3px 3px;
+  border-color  : rgb(130, 130, 130);
+  border-width  : 1px;
+  flex-direction: column;
+}
+
+.listItem {
+  display         : flex;
+  align-items     : center;
+  background-color: rgb(255, 255, 255);
+  height          : 1.6rem;
+  padding-left    : 0.5rem;
+}
+
+.listItem:hover {
+  background-color: rgb(90, 140, 231);
+}
+
+
+.sound.dropDown input {
+  background-color: rgb(230, 230, 230);
+  border-style    : solid;
+  border-bottom   : 0;
+  border-radius   : 3px 3px 0 0;
+  border-color    : rgb(130, 130, 130);
+  border-width    : 1px;
+  outline-width   : 0;
+  outline         : none;
+
+}
+
+.sound::after {
+  position        : relative;
+  display         : flex;
+  align-items     : center;
+  content         : "\25B2";
+  color           : rgb(172, 172, 172);
+  color           : rgba(172, 172, 172, 0.5);
+  background-color: transparent;
+  left            : -1.1rem;
+  margin-bottom   : 0.2rem;
+}
+
+.sound.dropDown::after {
+  position        : relative;
+  display         : flex;
+  align-items     : center;
+  content         : "\25BC";
+  color           : rgb(105, 105, 105);
+  background-color: transparent;
+  left            : -1.1rem;
+  margin-bottom   : 0.1rem;
+}
+
+.filename {
+  width           : 20rem;
+  padding         : 0.1em 0.5rem 0.1em 0.5rem;
+  background-color: rgb(255, 255, 255);
+  border-style    : solid;
+  border-width    : 1px;
+  border-radius   : 3px;
+  border-color    : rgb(201, 201, 201);
+  display         : flex;
+  align-items     : center;
+  align-content   : center;
+  justify-content : flex-start;
+  height          : 1.6rem;
+}
+
+.filesize {
+  width           : 7rem;
+  padding         : 0.1em 0.5rem 0.1em 0.5rem;
+  background-color: rgb(255, 255, 255);
+  border-style    : solid;
+  border-width    : 1px;
+  border-radius   : 3px;
+  border-color    : rgb(201, 201, 201);
+  display         : flex;
+  align-items     : center;
+  align-content   : center;
+  justify-content : flex-start;
+  height          : 1.6rem;
+}
+
+.filedelete {
+  width          : 2rem;
+  margin-left    : 0.2rem;
+  font-size      : 1.3em;
+  color          : rgb(60, 60, 60);
+  height         : 2rem;
+  display        : flex;
+  align-items    : center;
+  align-content  : center;
+  justify-content: center;
+  padding        : 0.1em;
+}
+
+.filedelete>span:hover {
+  color: rgb(100, 50, 50);
+}
+
+.filedelete>span:active {
+  color: rgb(150, 0, 0);
+}
+
+.fileTableHead .filename,
+.fileTableHead .filesize {
+  background-color: transparent;
+  border          : none;
+  font-weight     : bold;
+}
+
+#fileToUpload {
+  display: none
+}
+
+#fileUploadLabel {
+  width           : 20rem;
+  padding         : 0.1em 0.5rem 0.1em 0.5rem;
+  background-color: rgb(255, 255, 255);
+  border-style    : solid;
+  border-width    : 1px;
+  border-radius   : 3px;
+  border-color    : rgb(201, 201, 201);
+  display         : flex;
+  align-items     : center;
+  align-content   : center;
+  justify-content : flex-start;
+  height          : 2.1rem;
+  margin-right    : 1rem;
+}
+
+#oldupload-button {
+  height         : 2.1rem;
+  display        : flex;
+  flex-direction : row;
+  justify-content: center;
+  align-items    : center;
+}
+
+a {
+  text-decoration: none;
+}

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Setup ESP</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="setup.css" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+</head>
+
+<body onload="startSetup()">
+  <div id="content">
+    <div id="generalHeading">
+      <h1>ESP Settings</h1>
+    </div>
+    <div class="formContainer">
+      <noscript>Please use a recent Javascript enabled browser</noscript>
+      <form id="wifiform" action="javascript:submitSetup()">
+        <section id="espname">
+          <div class="formHeading">
+            <h2>Device Name</h2>
+          </div>
+          <div class="settingsColumn">
+            <div class="formRow">
+              <div class="labelContainer">
+                <label class="settingLabel" for="Name">Name</label>
+              </div>
+              <div class="inputContainer">
+                <input type="text" value="" id="name" name="espname" maxlength="31">
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="mwifi">
+          <div class="formHeading">
+            <h2>Wifi Mode</h2>
+          </div>
+          <div class="settingsColumn">
+            <fieldset>
+              <div class="formRow">
+                <div class="labelContainer">
+                  <label class="settingLabel" for="ap">Access Point</label>
+                </div>
+                <div class="inputContainer">
+                  <input type="radio" onclick="switchWifiMode(1)" id="radio_ap" name="wf" value="1">
+                </div>
+              </div>
+              <div class="formRow">
+                <div class="labelContainer">
+                  <label class="settingLabel" for="ap_sta">Access Point and Wifi Client</label>
+                </div>
+                <div class="inputContainer">
+                  <input type="radio" onclick="switchWifiMode(2)" id="radio_apsta" name="wf" value="2">
+                </div>
+              </div>
+              <div class="formRow">
+                <div class="labelContainer">
+                  <label class="settingLabel" for="sta">Wifi Client</label>
+                </div>
+                <div class="inputContainer">
+                  <input type="radio" onclick="switchWifiMode(3)" id="radio_sta" name="wf" value="3">
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </section>
+        <section id="idap">
+          <div class="formHeading">
+            <h2>Access Point Settings</h2>
+          </div>
+          <div class="settingsColumn">
+            <div class="formRow">
+              <div class="labelContainer">
+                <label class="settingLabel" for="SSID">SSID</label>
+              </div>
+              <div class="inputContainer">
+                <input type="text" value="" id="formapssid" name="apssid" maxlength="32">
+              </div>
+            </div>
+            <div class="formRow Remark">
+              <div class="labelContainer">
+              </div>
+              <div class="inputContainer">
+                Open AP with empty password
+              </div>
+            </div>
+            <div class="formRow">
+              <div class="labelContainer">
+                <label class="settingLabel" for="Password">Password</label>
+              </div>
+              <div class="inputContainer">
+                <input type="text" value="" id="formappw" name="appw" maxlength="64">
+              </div>
+            </div>
+            <div id="idapch">
+              <div class="formRow">
+                <div class="labelContainer">
+                  <label class="settingLabel" for="apchannel">AP Channel</label>
+                </div>
+                <div class="inputContainer">
+                  <input type="number" value="1" id="formapch" name="apch" max="13" min="1" step="1">
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="idsta">
+          <div class="formHeading">
+            <h2>Wifi Client Settings</h2>
+          </div>
+          <div class="settingsColumn">
+            <div class="formRow">
+              <div class="labelContainer">
+                <label class="settingLabel" for="formstassid">SSID</label>
+              </div>
+              <div class="inputContainer">
+                <input type="text" value="" id="formstassid" name="stssid" maxlength="32">
+              </div>
+            </div>
+            <div class="formRow">
+              <div class="labelContainer">
+                <label class="settingLabel" for="formstapw">Password</label>
+              </div>
+              <div class="inputContainer">
+                <input type="password" value="" id="formstapw" name="stpw" maxlength="64">
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="ntp">
+          <div class="formHeading">
+            <h2>Time Settings</h2>
+          </div>
+          <div class="settingsColumn">
+            <div class="formRow">
+              <div class="labelContainer">
+                <label class="settingLabel" for="ntpserver">NTP Server</label>
+              </div>
+              <div class="inputContainer">
+                <input type="text" value="" id="ntpserver" name="ntpserver" maxlength="39">
+              </div>
+            </div>
+            <div class="formRow Remark">
+              <div class="labelContainer">
+              </div>
+              <div class="inputContainer">
+                Timezone is defined as TZ variable. Example for<br>
+                Amsterdam or Paris timezone: <br>
+                CET-1CES-2,M3.5.0/2,M10.5.0/3
+              </div>
+            </div>
+            <div class="formRow">
+              <div class="labelContainer">
+                <label class="settingLabel" for="timezone">Timezone</label>
+              </div>
+              <div class="inputContainer">
+                <input type="text" value="" id="timezone" name="timezone" maxlength="39">
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="formSubmit">
+            <button type="submit">Submit Setup</button>
+          </div>
+        </section>
+      </form>
+      <section id="time">
+        <div class="formHeading">
+          <h2>Time</h2>
+        </div>
+        <div id="timeShow">
+          <div class="formRow">
+            <div class="labelContainer">
+              <span class="settingLabel">
+                ESP32 UTC unix timestamp
+              </span>
+            </div>
+            <div id="espUtcStamp" class="inputContainer">
+            </div>
+          </div>
+          <div class="formRow">
+            <div class="labelContainer">
+              <span class="settingLabel">
+                ESP32 UTC Time
+              </span>
+            </div>
+            <div id="espUtcTime" class="inputContainer">
+            </div>
+          </div>
+          <div class="formRow">
+            <div class="labelContainer">
+              <span class="settingLabel">
+                ESP32 Local Time
+              </span>
+            </div>
+            <div id="espLocalTime" class="inputContainer">
+            </div>
+          </div>
+          <div class="formRow">
+            <div class="labelContainer">
+              <span class="settingLabel">
+                System Local Time
+              </span>
+            </div>
+            <div id="systemTime" class="inputContainer">
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="formSubmit">
+          <button type="submit" onclick="submitTime()">Copy System UTC Time</button>
+        </div>
+      </section>
+      <section id="pageLink" class="formSubmit">
+        <A href="files.html">File Management</A>
+      </section>
+    </div>
+  </div>
+  <script src="setup.js"></script>
+</body>
+
+</html>

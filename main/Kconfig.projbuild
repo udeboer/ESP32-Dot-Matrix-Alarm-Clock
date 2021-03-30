@@ -1,0 +1,38 @@
+menu "Clock Configuration"
+
+    config ESP_WIFI_SSID
+        string "WiFi SSID"
+        default "espproject001"
+        help
+            SSID (network name) for the ESP AP.
+
+    config ESP_WIFI_PASSWORD
+        string "WiFi Password"
+        default "mypassword"
+        help
+            WiFi password for the ESP AP. Empty gives an open AP without password.
+
+    config ESP_MAX_STA_CONN
+        int "Maximal STA connections"
+        default 4
+        help
+            Max number of the STA connects to the ESP AP.
+    
+    config ESP_WIFISTA_SSID
+        string "WiFi Client SSID"
+        default "networkname"
+        help
+            SSID (network name) to connect to.
+
+    config ESP_WIFISTA_PASSWORD
+        string "WiFi Client Password"
+        default "password"
+        help
+            WiFi password (WPA or WPA2) to connect to.
+
+    config ESP_WIFI_MODE
+        int "AP=1 APSTA=2 STA=3"
+        default 1
+        help
+            Is the ESP a WiFi access point, client(station) or both 
+endmenu

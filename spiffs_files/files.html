@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>ESP Files</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="setup.css" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+</head>
+
+<body onload="startFiles()">
+  <div id="content">
+    <div id="generalHeading">
+      <h1>ESP Files</h1>
+    </div>
+    <div class="formContainer">
+      <noscript>Please use a recent Javascript enabled browser</noscript>
+      <section id="fileListHead">
+        <div class="formHeading">
+          <h2>Files</h2>
+        </div>
+      </section>
+      <section id="fileList">
+      </section>
+      <section id="uploadHead">
+        <div class="formHeading">
+          <h2>Upload File</h2>
+        </div>
+      </section>
+      <section id="upload">
+        <div class="formRow">
+          <label id="fileUploadLabel" for="fileToUpload">Browse for files</label>
+          <input id="fileToUpload" type="file" name="fileToUpload" oninput="updateFileChoice()" />
+          <button id="upload-button" onclick="uploadFile()"> Upload </button>
+        </div>
+      </section>
+      <section id="pageLink" class="formSubmit">
+        <A href="setup.html">Network Settings</A>
+      </section>
+    </div>
+  </div>
+  <script src="setup.js"></script>
+</body>
+
+</html>
