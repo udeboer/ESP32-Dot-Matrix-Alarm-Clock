@@ -1,7 +1,7 @@
 # README.md
 This alarmclock project is created with ESP32 IDF. Version 4.2. 
 
-The dotmatrix displays are controlled by Max7219. The code is compatible with the multiple of 4 by 8x8 dotmatrix modules found on internet. (Switch rotation on in the code for these). A simple level converter is used for the 3.3 > 5v level of the max7219. Some people do not use these. But I had some problems.
+The dotmatrix displays are controlled by max7219 chips. The code is compatible with the multiple of 4 by 8x8 dotmatrix modules found on internet. (Switch rotation on in the code for these). A simple level converter is used for the 3.3 > 5v level of the max7219. Some people do not use these. But I had some problems.
 
 The time is kept by SNTP and an additional ds3231 for backup. It is easy to modify the code to just use one of the options. 
 
